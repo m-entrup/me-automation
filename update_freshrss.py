@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "requests",
+#     "typer",
+# ]
+# ///
 import re
 import subprocess
 import zipfile
