@@ -5,6 +5,7 @@
 #     "typer",
 # ]
 # ///
+import platform
 import re
 import subprocess
 import zipfile
@@ -85,9 +86,14 @@ def start_ffs(version: str):
     How to run a subprocess:
     https://docs.python.org/3/library/subprocess.html#using-the-subprocess-module
     """
-    ffs_exe = Path(r"C:\Program Files\FreeFileSync\FreeFileSync.exe")
     ffs_output = Path.home() / "Downloads" / f"FreshRSS-{version} Update.ffs_gui"
-    subprocess.run([ffs_exe, ffs_output])
+    if platform.system() == "Windows":
+        ffs_exe = Path(r"C:\Program Files\FreeFileSync\FreeFileSync.exe")
+        subprocess.run([ffs_exe, ffs_output])
+    elif platform.system() == "Linux":
+        subprocess.run(["flatpak", "run", "org.freefilesync.FreeFileSync", ffs_output])
+    else:
+        print("Unsupported operating system.")
 
 
 def open_website():
@@ -98,7 +104,13 @@ def open_website():
     How to open a URL with the default webbrowser
     https://stackoverflow.com/questions/66392447/powershell-open-url-and-login
     """
-    subprocess.run(["pwsh", "-Command", "Start-Process", "https://rss-reader.eu"])
+    url = "https://rss-reader.eu"
+    if platform.system() == "Windows":
+        subprocess.run(["pwsh", "-Command", "Start-Process", url])
+    elif platform.system() == "Linux":
+        subprocess.run(["xdg-open", url])
+    else:
+        print("Unsupported operating system.")
 
 
 def main(version: str):
