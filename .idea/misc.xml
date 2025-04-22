@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Pipenv (me-automation)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Pipenv (me-automation) (2)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="uv (me-automation)" project-jdk-type="Python SDK" />
 </project>
