@@ -124,7 +124,7 @@ def start_ffs(version: str):
         subprocess.run([ffs_exe, ffs_output])
         logger.success("FreeFileSync process completed.")
     elif platform.system() == "Linux":
-        subprocess.run(["flatpak", "run", "org.freefilesync.FreeFileSync", ffs_output])
+        subprocess.run(["FreeFileSync", ffs_output])
         logger.success("FreeFileSync process completed.")
     else:
         logger.error("Unsupported operating system.")
